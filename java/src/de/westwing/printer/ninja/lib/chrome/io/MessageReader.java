@@ -6,7 +6,6 @@ import java.io.InputStream;
 import de.westwing.printer.ninja.lib.Debug;
 import org.json.JSONException;
 
-import de.westwing.printer.ninja.NinjaPrinter;
 import de.westwing.printer.ninja.lib.chrome.message.Message;
 import de.westwing.printer.ninja.lib.chrome.message.MessageInterface;
 
@@ -30,32 +29,32 @@ public class MessageReader implements MessageReaderInterface {
 
 		int offset = 0;
 		int readBytes = 0;
-		
+
 		try {
 			do {
 				readBytes = this.ins.read(fullMessage, offset, messageLength - offset);
 
 				getDebugService().print("offest:" + offset + ", read bytes:" + readBytes + ", message:" + fullMessage.toString());
-	
+
 				offset += readBytes;
-				
+
 			} while(offset < messageLength);
 		} catch (Exception e) {
 			getDebugService().print("Someone killed me:" + e.getMessage());
 		}
 
 		getDebugService().print("Arrived length:" + fullMessage.toString().length());
-		
+
 		return new Message(new String(fullMessage, "UTF-8"));
-	
+
 	}
-	
+
 	@Override
 	public int available() throws IOException
 	{
 		return this.ins.available();
 	}
-	
+
 	public void close() throws IOException {
 		if (null != this.ins) {
 			this.ins.close();
@@ -69,9 +68,9 @@ public class MessageReader implements MessageReaderInterface {
 	 * @return
 	 */
 	protected static int getInt(byte[] bytes) {
-		
-		return  (bytes[3] << 24) & 0xff000000 | 
-				(bytes[2] << 16) & 0x00ff0000 | 
+
+		return  (bytes[3] << 24) & 0xff000000 |
+				(bytes[2] << 16) & 0x00ff0000 |
 				(bytes[1] << 8) & 0x0000ff00 |
 				(bytes[0] << 0) & 0x000000ff;
 	}

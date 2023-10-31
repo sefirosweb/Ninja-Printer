@@ -14,6 +14,10 @@ public class JsonPrintMessage implements JsonPrintMessageInterface {
 	protected String secondaryPrinterName;
 	
 	protected String printerType;
+
+	protected String orientationRequested;
+
+	protected String mediaSizeName;
 	
 	protected DocumentInterface document;
 	
@@ -39,6 +43,22 @@ public class JsonPrintMessage implements JsonPrintMessageInterface {
 	
 	@Override public String getPrinterName() {
 		return this.printerName;
+	}
+
+	@Override public void setOrientationRequested(String orientationRequested) {
+		this.orientationRequested =  orientationRequested;
+	}
+
+	@Override public String getOrientationRequested() {
+		return this.orientationRequested;
+	}
+
+	@Override public void setMediaSizeName(String mediaSizeName) {
+		this.mediaSizeName =  mediaSizeName;
+	}
+
+	@Override public String getMediaSizeName() {
+		return this.mediaSizeName;
 	}
 
 	@Override public void setSecondaryPrinterName(String secondaryPrinterName) {

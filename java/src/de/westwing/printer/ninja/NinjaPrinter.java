@@ -15,9 +15,6 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
-import java.util.Calendar;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -107,14 +104,14 @@ public class NinjaPrinter {
 			
 			// Read message.
 			message = reader.read();
-			getDebugService().print("Raw message: " + message);
+						getDebugService().print("Raw message: " + message);
 			printMessage = JsonMessageParser.getInstance().parse(message);
 			getDebugService().print("Parsed message: " + printMessage);
 			// Send document to printer.
 
 			getPrinterFactory().factory(printMessage, this.getUtility())
 							.enqueue(printMessage.getDocument())
-							.print();
+							.print(printMessage);
 			getDebugService().print("Document sent to printer");
 			// Send response back.
 			writer.write(this.getSuccessMessage(printMessage));

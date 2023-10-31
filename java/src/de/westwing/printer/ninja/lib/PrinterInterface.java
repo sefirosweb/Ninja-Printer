@@ -1,6 +1,7 @@
 package de.westwing.printer.ninja.lib;
 
 import de.westwing.printer.ninja.lib.document.DocumentInterface;
+import de.westwing.printer.ninja.lib.message.JsonPrintMessageInterface;
 
 /**
  * 
@@ -11,7 +12,7 @@ public interface PrinterInterface {
 	/**
 	 * @throws PrintException
 	 */
-	public void print() throws PrintException;
+	public void print(JsonPrintMessageInterface printMessage) throws PrintException;
 
 	/**
 	 * @param document

@@ -69,6 +69,8 @@ public class JsonMessageParser {
 		String printerName = json.getString("printerName");
 		String printerType = json.getString("printerType");
 		String secondaryPrinterName = null;
+		String orientationRequested = null;
+		String mediaSizeName = null;
 		DocumentInterface document = null;
 		
 		if (json.has("filePath")) {
@@ -86,12 +88,22 @@ public class JsonMessageParser {
 		if (json.has("secondaryPrinterName") && !json.isNull("secondaryPrinterName")) {
 			secondaryPrinterName = json.getString("secondaryPrinterName");
 		}
+
+		if (json.has("orientationRequested") && !json.isNull("orientationRequested")) {
+			orientationRequested = json.getString("orientationRequested");
+		}
+
+		if (json.has("mediaSizeName") && !json.isNull("mediaSizeName")) {
+			mediaSizeName = json.getString("mediaSizeName");
+		}
 		
 		JsonPrintMessage  printMessage = new JsonPrintMessage(message);
 		printMessage.setPrinterName(printerName);
 		printMessage.setPrinterType(printerType);
 		printMessage.setSecondaryPrinterName(secondaryPrinterName);
 		printMessage.setDocument(document);
+		printMessage.setOrientationRequested(orientationRequested);
+		printMessage.setMediaSizeName(mediaSizeName);
 		
 		if(json.has("requestId")) {
 			printMessage.setRequestId(json.getString("requestId"));

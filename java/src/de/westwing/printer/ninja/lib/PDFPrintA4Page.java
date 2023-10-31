@@ -4,10 +4,6 @@ import com.sun.pdfview.PDFFile;
 import com.sun.pdfview.PDFPage;
 import com.sun.pdfview.PDFRenderer;
 
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.MediaSizeName;
-import javax.print.attribute.standard.OrientationRequested;
 import java.awt.*;
 import java.awt.print.PageFormat;
 import java.awt.print.Paper;
@@ -34,34 +30,6 @@ public class PDFPrintA4Page implements Printable {
         this.pdfFile = pdfFile;
     }
 
-    /**
-     * @author Omar Tchokhani <omar.tchokhani@westwing.de>
-     */
-    public PrintRequestAttributeSet getRequestAttributes() {
-        PrintRequestAttributeSet attributes = new HashPrintRequestAttributeSet();
-        attributes.add(OrientationRequested.PORTRAIT);
-        attributes.add(MediaSizeName.ISO_A4);
-
-        return attributes;
-    }
-
-    /**
-     * @author Omar Tchokhani <omar.tchokhani@westwing.de>
-     * @return A4 configured Paper.
-     */
-    public Paper getPaper() {
-        if (null == paper) {
-            paper = new Paper();
-            paper.setSize(595, 842); // A4 dimensions in font points
-            paper.setImageableArea(0, 0, paper.getWidth(), paper.getHeight());
-        }
-
-        return paper;
-    }
-
-    /**
-     * @author Omar Tchokhani <omar.tchokhani@westwing.de>
-     */
     @Override
     public int print(Graphics g, PageFormat format, int index) throws PrinterException {
         int pagenum = index + 1;

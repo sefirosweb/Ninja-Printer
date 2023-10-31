@@ -1,0 +1,14 @@
+{
+    "java.project.sourcePaths": [
+        "java/src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "java/dist/lib/jbig2.jar",
+        "java/dist/lib/jzebra.jar",
+        "java/dist/lib/org.json-20120521.jar",
+        "java/dist/lib/PDFRenderer-0.9.0-improved.jar"
+    ],
+    "java.dependency.packagePresentation": "hierarchical",
+    "editor.formatOnSave": false
+}

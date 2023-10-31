@@ -23,9 +23,25 @@ type the following:
 
 the program expects the following JSON message:
 
-{printerType="PDF|Label", printerName:"NameOfThePrinterToUse", fileContent:"YourFileBase64encodedContent"}
+```JSON
+{
+  "printerType=":"PDF|Label",
+  "printerName":"NameOfThePrinterToUse",
+  "fileContent":"YourFileBase64encodedContent",
+  "orientationRequested":"LANDSCAPE",
+  "mediaSizeName":"ISO_A4"
+}
+```
 
-{printerType="PDF|Label", printerName:"NameOfThePrinterToUse", filePath:"/path/to/your/file|http[s]://url/to/your/file"}
+```JSON
+{
+  "printerType=":"PDF|Label",
+  "printerName":"NameOfThePrinterToUse",
+  "filePath":"/path/to/your/file|http[s]://url/to/your/file",
+  "orientationRequested":"PORTRAIT",
+  "mediaSizeName":"ISO_A5"
+}
+```
 
 Important Note:
 If both fileContent and filePath are provided, filePath will be used.

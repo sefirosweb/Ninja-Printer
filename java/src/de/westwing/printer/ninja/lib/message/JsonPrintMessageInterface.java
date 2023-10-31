@@ -8,6 +8,10 @@ public interface JsonPrintMessageInterface {
 	public String getPrinterType();
 	
 	public String getPrinterName();
+	
+	public String getOrientationRequested();
+
+	public String getMediaSizeName();
 
 	public String getSecondaryPrinterName();
 	
@@ -16,6 +20,10 @@ public interface JsonPrintMessageInterface {
 	public void setRequestId(String id);
 	
 	public void setPrinterName(String printerName);
+
+	public void setOrientationRequested(String height);
+
+	public void setMediaSizeName(String width);
 
 	public void setSecondaryPrinterName(String secondaryPrinterName);
 	

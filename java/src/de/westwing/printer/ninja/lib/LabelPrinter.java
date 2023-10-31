@@ -5,8 +5,8 @@ import java.util.logging.Logger;
 import javax.print.PrintService;
 
 import jzebra.PrintRaw;
-import de.westwing.printer.ninja.NinjaPrinter;
 import de.westwing.printer.ninja.lib.document.DocumentInterface;
+import de.westwing.printer.ninja.lib.message.JsonPrintMessageInterface;
 
 /**
  * 
@@ -27,7 +27,7 @@ public class LabelPrinter extends AbstractPrinter {
 	}
 
 	@Override
-	public void print() throws PrintException {
+	public void print(JsonPrintMessageInterface printMessage) throws PrintException {
 		if (this.documentsQueue.isEmpty()) {
 			throw new PrintException("Printer queue is empty.");
 		}
@@ -35,10 +35,10 @@ public class LabelPrinter extends AbstractPrinter {
 		try {
 			getDebugService().print("DocQueue:" + this.documentsQueue.size());
 			getDebugService().print("DocQueue:" + this.documentsQueue.toString());
-			
+
 			for (DocumentInterface document : this.documentsQueue) {
 				getDebugService().print("Print begins");
-				
+
 				String temp = document.toRawString();
 				getDebugService().print("RawString in print:" + temp);
 				PrintRaw p = this.printRawFactory.createUtf8PrintRaw(this.printService, temp);
