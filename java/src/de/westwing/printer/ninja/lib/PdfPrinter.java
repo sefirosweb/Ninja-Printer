@@ -32,58 +32,60 @@ public class PdfPrinter extends AbstractPrinter {
 		this(printService, PrinterJob.getPrinterJob(), pdfFileFactory, pdfPrintA4PageFactory);
 	}
 
-	public MediaSizeName getMediaSize(String mediaSize) {
+	public MediaSize getMediaSize(String mediaSize) {
 		if (mediaSize != null) {
 			if (mediaSize.equalsIgnoreCase("ISO_A0")) {
-				return MediaSizeName.ISO_A0;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A0);
 			} else if (mediaSize.equalsIgnoreCase("ISO_A1")) {
-				return MediaSizeName.ISO_A1;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A1);
 			} else if (mediaSize.equalsIgnoreCase("ISO_A2")) {
-				return MediaSizeName.ISO_A2;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A2);
 			} else if (mediaSize.equalsIgnoreCase("ISO_A3")) {
-				return MediaSizeName.ISO_A3;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A3);
 			} else if (mediaSize.equalsIgnoreCase("ISO_A4")) {
-				return MediaSizeName.ISO_A4;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A4);
 			} else if (mediaSize.equalsIgnoreCase("ISO_A5")) {
-				return MediaSizeName.ISO_A5;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A5);
 			} else if (mediaSize.equalsIgnoreCase("ISO_A6")) {
-				return MediaSizeName.ISO_A6;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A6);
 			} else if (mediaSize.equalsIgnoreCase("ISO_A7")) {
-				return MediaSizeName.ISO_A7;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A7);
 			} else if (mediaSize.equalsIgnoreCase("ISO_A8")) {
-				return MediaSizeName.ISO_A8;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A8);
 			} else if (mediaSize.equalsIgnoreCase("ISO_A9")) {
-				return MediaSizeName.ISO_A9;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A9);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B0")) {
-				return MediaSizeName.ISO_B0;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B0);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B1")) {
-				return MediaSizeName.ISO_B1;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B1);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B2")) {
-				return MediaSizeName.ISO_B2;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B2);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B3")) {
-				return MediaSizeName.ISO_B3;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B3);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B4")) {
-				return MediaSizeName.ISO_B4;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B4);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B5")) {
-				return MediaSizeName.ISO_B5;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B5);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B6")) {
-				return MediaSizeName.ISO_B6;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B6);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B7")) {
-				return MediaSizeName.ISO_B7;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B7);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B8")) {
-				return MediaSizeName.ISO_B8;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B8);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B9")) {
-				return MediaSizeName.ISO_B9;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B9);
 			} else if (mediaSize.equalsIgnoreCase("ISO_B10")) {
-				return MediaSizeName.ISO_B10;
+				return MediaSize.getMediaSizeForName(MediaSizeName.ISO_B1);
 			} else if (mediaSize.equalsIgnoreCase("NA_LEGAL")) {
-				return MediaSizeName.NA_LEGAL;
+				return MediaSize.getMediaSizeForName(MediaSizeName.NA_LEGAL);
 			} else if (mediaSize.equalsIgnoreCase("NA_LETTER")) {
-				return MediaSizeName.NA_LETTER;
+				return MediaSize.getMediaSizeForName(MediaSizeName.NA_LETTER);
+			}else if (mediaSize.equalsIgnoreCase("4x6")) {
+				return new MediaSize(4, 6, MediaSize.INCH);
 			}
 		}
 
-		return MediaSizeName.ISO_A4;
+		return MediaSize.getMediaSizeForName(MediaSizeName.ISO_A4);
 	}
 
 	/**
@@ -117,7 +119,7 @@ public class PdfPrinter extends AbstractPrinter {
 			PageFormat pageFormat = this.printerJob.defaultPage();
 			Paper paper = pageFormat.getPaper();
 
-			MediaSize media = MediaSize.getMediaSizeForName(getMediaSize(paperSize));
+			MediaSize media = getMediaSize(paperSize);
 			paper.setSize(media.getX(MediaSize.INCH) * 71, media.getY(MediaSize.INCH) * 71);
 
 			if ("LANDSCAPE".equals(orientation)) {
