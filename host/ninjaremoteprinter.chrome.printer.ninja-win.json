@@ -1,0 +1,9 @@
+{
+  "name": "ninjaremoteprinter.chrome.printer.ninja",
+  "description": "Ninja Remote Printer Chrome Extension for Printing",
+  "path": "ninja-printer-host.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://chijhfigpcdfpbnbfgdnpmgoodabicch/"
+  ]
+}
