@@ -27,22 +27,26 @@ var NinjaPrinter = {
   },
 
   // Triggers printing a zpl document
-  printZpl: function (printerName, base64Content, requestId) {
+  printZpl: function (printerName, fileContent, requestId, orientationRequested, mediaSizeName) {
     this.print({
-      printerName: printerName,
-      fileContent: base64Content,
+      printerName,
+      fileContent,
       printerType: "label",
-      requestId: requestId,
+      requestId,
+      orientationRequested,
+      mediaSizeName
     });
   },
 
   // Triggers printing a pdf document
-  printPdf: function (printerName, base64Content, requestId) {
+  printPdf: function (printerName, fileContent, requestId, orientationRequested, mediaSizeName) {
     this.print({
-      printerName: printerName,
-      fileContent: base64Content,
+      printerName,
+      fileContent,
       printerType: "PDF",
-      requestId: requestId,
+      requestId,
+      orientationRequested,
+
     });
   },
 
