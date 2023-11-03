@@ -1,8 +1,8 @@
 name: Update Chrome Extension
 on:
   push:
-    tags:
-      - v*.*.*
+    branches:
+      - chrome_ninja_printer_extension
 
 jobs:
   build-chrome-extension:
@@ -16,13 +16,13 @@ jobs:
         run: |-
           # fill in your build steps here...
           # we archive the dist folder and include SHA commit as the last step
-          zip -r chrome-extension-${{ github.event.pull_request.head.sha }}.zip browser
+          zip -r chrome-extension.zip browser
 
       - name: Archive chrome-extension artifact
         uses: actions/upload-artifact@v2
         with:
-          name: chrome-extension-${{ github.sha }}
-          path: chrome-extension-${{ github.event.pull_request.head.sha }}.zip
+          name: chrome-extension
+          path: chrome-extension.zip
 
   # api usage reference:
   # * <https://developer.chrome.com/docs/webstore/using_webstore_api/>
@@ -45,7 +45,7 @@ jobs:
       - name: Download bundle artifact
         uses: actions/download-artifact@v3
         with:
-          name: chrome-extension-${{ github.sha }}
+          name: chrome-extension
 
       - name: Install webstore cli
         run: |-
@@ -54,7 +54,7 @@ jobs:
       - name: Upload step
         run: |-
           chrome-webstore-upload upload \\
-            --source chrome-extension-${{ github.event.pull_request.head.sha }}.zip \\
+            --source chrome-extension.zip \\
             --extension-id ${{ env.EXTENSION_ID }} \\
             --client-id ${{ secrets.CI_GOOGLE_CLIENT_ID }} \\
             --client-secret ${{ secrets.CI_GOOGLE_CLIENT_SECRET }} \\
