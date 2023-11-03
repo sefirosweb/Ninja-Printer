@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Ninja Remote Printer",
     "description": "This extension allows direct printing, useful for warehouse applications",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "icons": {
         "64": "icon_64.png",
         "128": "icon_128.png"
