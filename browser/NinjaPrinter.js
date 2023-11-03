@@ -7,7 +7,7 @@ var NinjaPrinter = {
     result: "ninjaprinter.result",
   },
 
-  //  Attached cutom events listeners map
+  // Attached cutom events listeners map
   listeners: {
     "ninjaprinter.result": [],
     "ninjaprinter.afterPrint": [],
@@ -27,14 +27,12 @@ var NinjaPrinter = {
   },
 
   // Triggers printing a zpl document
-  printZpl: function (printerName, fileContent, requestId, orientationRequested, mediaSizeName) {
+  printZpl: function (printerName, fileContent, requestId) {
     this.print({
       printerName,
       fileContent,
       printerType: "label",
-      requestId,
-      orientationRequested,
-      mediaSizeName
+      requestId
     });
   },
 
@@ -46,7 +44,7 @@ var NinjaPrinter = {
       printerType: "PDF",
       requestId,
       orientationRequested,
-
+      mediaSizeName,
     });
   },
 
