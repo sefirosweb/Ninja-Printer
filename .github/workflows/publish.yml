@@ -53,7 +53,7 @@ jobs:
 
       - name: Upload step
         run: |-
-          chrome-webstore-upload upload \\
+          chrome-webstore-upload publish \\
             --source chrome-extension.zip \\
             --extension-id ${{ env.EXTENSION_ID }} \\
             --client-id ${{ secrets.CI_GOOGLE_CLIENT_ID }} \\
